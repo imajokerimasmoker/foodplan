@@ -1,0 +1,76 @@
+<div class="form-container">
+  <h2>{{ foodHackForm.get('id')?.value ? 'Edit' : 'Add' }} Food Hack</h2>
+  <form [formGroup]="foodHackForm" (ngSubmit)="onSubmit()">
+    <!-- Title -->
+    <div>
+      <label for="title">Title:</label>
+      <input id="title" type="text" formControlName="title">
+      <div *ngIf="foodHackForm.get('title')?.invalid && (foodHackForm.get('title')?.dirty || foodHackForm.get('title')?.touched)" class="error">
+        Title is required.
+      </div>
+    </div>
+
+    <!-- Description -->
+    <div>
+      <label for="description">Description:</label>
+      <textarea id="description" formControlName="description"></textarea>
+      <div *ngIf="foodHackForm.get('description')?.invalid && (foodHackForm.get('description')?.dirty || foodHackForm.get('description')?.touched)" class="error">
+        Description is required.
+      </div>
+    </div>
+
+    <!-- Preparation Time -->
+    <div>
+      <label for="preparationTime">Preparation Time (minutes):</label>
+      <input id="preparationTime" type="number" formControlName="preparationTime">
+      <div *ngIf="foodHackForm.get('preparationTime')?.invalid && (foodHackForm.get('preparationTime')?.dirty || foodHackForm.get('preparationTime')?.touched)" class="error">
+        <span *ngIf="foodHackForm.get('preparationTime')?.errors?.['required']">Preparation time is required.</span>
+        <span *ngIf="foodHackForm.get('preparationTime')?.errors?.['min']">Preparation time cannot be negative.</span>
+      </div>
+    </div>
+
+    <!-- Cooking Time -->
+    <div>
+      <label for="cookingTime">Cooking Time (minutes):</label>
+      <input id="cookingTime" type="number" formControlName="cookingTime">
+      <div *ngIf="foodHackForm.get('cookingTime')?.invalid && (foodHackForm.get('cookingTime')?.dirty || foodHackForm.get('cookingTime')?.touched)" class="error">
+        <span *ngIf="foodHackForm.get('cookingTime')?.errors?.['required']">Cooking time is required.</span>
+        <span *ngIf="foodHackForm.get('cookingTime')?.errors?.['min']">Cooking time cannot be negative.</span>
+      </div>
+    </div>
+
+    <!-- Ingredients -->
+    <div formArrayName="ingredients">
+      <h3>Ingredients</h3>
+      <div *ngFor="let ingredient of ingredients.controls; let i=index" [formGroupName]="i" class="form-array-item">
+        <input type="text" [formControlName]="i" placeholder="Ingredient">
+        <button type="button" (click)="removeIngredient(i)" class="remove-button">Remove</button>
+      </div>
+      <button type="button" (click)="addIngredient()" class="add-button">Add Ingredient</button>
+    </div>
+
+    <!-- Instructions -->
+    <div formArrayName="instructions">
+      <h3>Instructions</h3>
+      <div *ngFor="let instruction of instructions.controls; let i=index" [formGroupName]="i" class="form-array-item">
+        <input type="text" [formControlName]="i" placeholder="Instruction">
+        <button type="button" (click)="removeInstruction(i)" class="remove-button">Remove</button>
+      </div>
+      <button type="button" (click)="addInstruction()" class="add-button">Add Instruction</button>
+    </div>
+
+    <button type="submit" [disabled]="foodHackForm.invalid">Submit</button>
+  </form>
+</div>
+
+<!-- Basic styling for errors and layout -->
+<style>
+  .form-container { max-width: 600px; margin: auto; padding: 20px; }
+  label { display: block; margin-top: 10px; }
+  input[type="text"], input[type="number"], textarea { width: 100%; padding: 8px; margin-top: 5px; box-sizing: border-box; }
+  .error { color: red; font-size: 0.9em; }
+  .form-array-item { display: flex; align-items: center; margin-bottom: 5px; }
+  .form-array-item input { flex-grow: 1; margin-right: 10px; }
+  .add-button, .remove-button { padding: 5px 10px; margin-left: 5px; }
+  button[type="submit"] { margin-top: 20px; padding: 10px 15px; }
+</style>

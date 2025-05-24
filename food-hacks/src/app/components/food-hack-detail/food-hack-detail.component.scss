@@ -1,0 +1,47 @@
+:host {
+  display: block;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-top: 20px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+h2 {
+  margin-top: 0;
+  color: #333; // Local override if needed
+}
+
+p {
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+
+strong {
+  color: #007bff; // Highlight labels
+}
+
+h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 5px;
+  color: #555; // Slightly different color for sub-headers
+}
+
+ul, ol {
+  list-style-position: inside;
+  padding-left: 0; // Remove default browser padding if using list-style-position: inside
+}
+
+ul li, ol li {
+  margin-bottom: 5px;
+  padding-left: 10px; // Indent list items slightly
+}
+
+.no-details {
+  text-align: center;
+  color: #777;
+  margin-top: 20px;
+}
