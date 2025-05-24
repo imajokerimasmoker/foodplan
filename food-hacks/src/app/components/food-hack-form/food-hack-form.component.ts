@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray } from '@angular/forms';
-import { FoodHack } from '../../food-hack';
+import { FoodHack } from '../../food-hack'; // Using relative path
 import { ReactiveFormsModule } from '@angular/forms'; // Import ReactiveFormsModule
 import { CommonModule } from '@angular/common'; // Import CommonModule
 
