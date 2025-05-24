@@ -1,0 +1,35 @@
+:host {
+  display: block;
+  margin-bottom: 20px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+li h3 {
+  margin-top: 0;
+  color: #333; // Override global header color if needed for list items
+}
+
+li p {
+  margin-bottom: 0;
+  font-size: 0.9em;
+  color: #555;
+}
+
+.no-hacks {
+  text-align: center;
+  color: #777;
+  margin-top: 20px;
+}

@@ -1,0 +1,20 @@
+<div *ngIf="foodHack">
+  <h2>{{ foodHack.title }}</h2>
+  <p><strong>ID:</strong> {{ foodHack.id }}</p>
+  <p><strong>Description:</strong> {{ foodHack.description }}</p>
+  <p><strong>Preparation Time:</strong> {{ foodHack.preparationTime }} minutes</p>
+  <p><strong>Cooking Time:</strong> {{ foodHack.cookingTime }} minutes</p>
+  
+  <h3>Ingredients:</h3>
+  <ul>
+    <li *ngFor="let ingredient of foodHack.ingredients">{{ ingredient }}</li>
+  </ul>
+  
+  <h3>Instructions:</h3>
+  <ol>
+    <li *ngFor="let instruction of foodHack.instructions">{{ instruction }}</li>
+  </ol>
+</div>
+<div *ngIf="!foodHack">
+  <p>No food hack details to display.</p>
+</div>

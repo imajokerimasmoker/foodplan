@@ -1,0 +1,146 @@
+:host {
+  display: block;
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+h2 {
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+form div {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #555;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 1em;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.error {
+  color: red;
+  font-size: 0.875em;
+  margin-top: 5px;
+}
+
+/* FormArray styling */
+.form-array-container {
+  padding: 10px;
+  border: 1px dashed #ccc;
+  border-radius: 4px;
+  margin-bottom: 15px;
+}
+
+.form-array-container h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  color: #007bff;
+}
+
+.form-array-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.form-array-item input {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.add-button,
+.remove-button {
+  padding: 8px 12px;
+  font-size: 0.9em;
+  border-radius: 4px;
+}
+
+.add-button {
+  background-color: #28a745; /* Green */
+}
+
+.add-button:hover {
+  background-color: #218838;
+}
+
+.remove-button {
+  background-color: #dc3545; /* Red */
+}
+
+.remove-button:hover {
+  background-color: #c82333;
+}
+
+button[type="submit"] {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  font-size: 1.1em;
+  margin-top: 20px;
+}
+
+/* Override global button styles if they were too generic */
+:host ::ng-deep button {
+  /* Specificity for buttons within this component if needed,
+     but try to rely on direct styling or global styles first */
+}
+
+/* Adjusting form control name selectors in HTML to match this scss file */
+/* e.g. [formGroupName]="i" for array items, and [formControlName]="i" for the control within it
+   The HTML provided in the previous step for food-hack-form.component.html already uses this structure
+   but for the FormArray inputs it uses [formControlName]="i" instead of a named control inside formGroupName.
+   The SCSS here assumes a structure like:
+   <div formArrayName="ingredients">
+     <h3>Ingredients</h3>
+     <div *ngFor="let ingredientCtrl of ingredients.controls; let i=index" [formGroupName]="i">
+       <input type="text" formControlName="name"> // Assuming ingredient is an object with a 'name' property
+       <button (click)="removeIngredient(i)">Remove</button>
+     </div>
+     <button (click)="addIngredient()">Add Ingredient</button>
+   </div>
+   If ingredients are just strings, the HTML would be:
+    <div formArrayName="ingredients">
+      <h3>Ingredients</h3>
+      <div *ngFor="let ingredientCtrl of ingredients.controls; let i=index" class="form-array-item">
+        <input type="text" [formControlName]="i">
+        <button (click)="removeIngredient(i)">Remove</button>
+      </div>
+      <button (click)="addIngredient()">Add Ingredient</button>
+    </div>
+   The current SCSS for .form-array-item input will work fine for this string array case.
+*/

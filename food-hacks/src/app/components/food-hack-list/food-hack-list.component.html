@@ -1,0 +1,12 @@
+<div *ngIf="foodHacks.length > 0">
+  <h2>Food Hacks</h2>
+  <ul>
+    <li *ngFor="let hack of foodHacks">
+      <h3>{{ hack.title }}</h3>
+      <p>{{ hack.description }}</p>
+    </li>
+  </ul>
+</div>
+<div *ngIf="foodHacks.length === 0">
+  <p>No food hacks available.</p>
+</div>
