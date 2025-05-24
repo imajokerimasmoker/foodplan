@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FoodHack } from '../../food-hack';
+import { FoodHack } from '../../food-hack'; // Using relative path
 import { CommonModule } from '@angular/common';
 
 @Component({
